@@ -1,0 +1,14 @@
+main {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 25vw 50vw 25vw;
+  background-color: rgb(187, 97, 132);
+}
+
+.board_cont {
+  background-color: white;
+}
+
+.players {
+  margin: auto;
+}
