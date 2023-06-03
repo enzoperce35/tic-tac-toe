@@ -1,14 +1,15 @@
 const gameBoard = (() => {
 
-  // board
-  const boardTiles = document.querySelectorAll(".game_board ul li");
+  // cached dom
+  const boardTiles = document.querySelectorAll(".gameboard ul li");
 
 
   // events
-  events.on("startRound", openGameBoard)
-  events.on("roundOver", clearBoard, closeGameBoard)
+  events.on("startRound", clearBoard, openGameBoard)
+  events.on("roundOver", highlightWin, closeGameBoard)
 
 
+  // functions
   function openGameBoard() {
     for (i=0; i<boardTiles.length; i++) {
       boardTiles[i].addEventListener( 'click', occupyBoardTile );
@@ -21,20 +22,38 @@ const gameBoard = (() => {
     };
   }
 
-
   function occupyBoardTile() {
-    this.innerText = players.getTurnPlayer().getPiece()
+    const object = document.createElement('object')
+
+    object.data = players.getTurnPlayer().getPiece()
+
+    this.appendChild(object)
 
     this.removeEventListener('click', occupyBoardTile)
 
     events.emit('turnWasMade', this)
   }
 
-
-  // functions
   function clearBoard() {
     for(i=0; i<boardTiles.length; i++) {
-      boardTiles[i].innerText = '';
+      let tile = boardTiles[i]
+
+      tile.innerText = '';
+
+      tile.style = "background-color: white"
     }
   }
+
+  function highlightWin(winner) {
+    if (winner == 'none') return
+
+    let winComb = winner.winComb
+
+    let winCombs = document.querySelectorAll(`#${winComb[0]}, #${winComb[1]}, #${winComb[2]}`);
+
+    for(i=0; i<winCombs.length; i++) {
+       winCombs[i].style = "background-color: gold"
+    }
+  }
+
 })();

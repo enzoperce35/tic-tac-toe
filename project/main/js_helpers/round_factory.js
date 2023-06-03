@@ -29,6 +29,8 @@ const Round = () => {
       if (winCombs[i].every( tile )) {
         winner = players.getTurnPlayer()
 
+        winner.winComb = winCombs[i]
+
         return true
       }; i++;
     }
@@ -48,5 +50,9 @@ const Round = () => {
     turnCount++
   }
 
-  return {roundOver, close, closed, getWinner, addTurn}
+  return { roundOver,
+           close,
+           closed,
+           getWinner,
+           addTurn }
 };

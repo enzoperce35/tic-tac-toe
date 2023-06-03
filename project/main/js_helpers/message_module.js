@@ -1,12 +1,14 @@
 const gameMessage = (() => {
 
   // cached DOM
-  const roundMsg  = document.getElementById("roundNum");
-  const turnMsg   = document.getElementById("turnPlayer");
+  const userName  = document.querySelectorAll(".input-wrap");
+  const roundMsg  = document.getElementById("round-num");
+  const turnMsg   = document.getElementById("turnplayer");
   const scoreCont = document.getElementsByClassName("score");
 
 
   // events
+  events.on("gameStart", displayName)
   events.on("roundOver", displayWin, displayScores)
   events.on("gameOver", displayGameResult)
   events.on("startRound", displayTurn, displayRound, displayScores)
@@ -14,6 +16,16 @@ const gameMessage = (() => {
 
 
   // functions
+  function displayName() {
+    for(i=0; i<userName.length; i++) {
+      let userInput = userName[i]
+
+      userInput.firstElementChild.remove()
+
+      userInput.innerText = players.getPlayers()[i].getName()
+    }
+  }
+
   function displayGameResult() {
     roundMsg.innerHTML = "Game Over"
 
@@ -29,10 +41,14 @@ const gameMessage = (() => {
   }
 
   function displayWin(winner) {
-    let winMsg = " takes round " + roundCount
+    let drawRound = (winner == 'none')
+
+    let winMsg = `<em style="color: mediumpurple"> ${ (drawRound) ? '' : winner.getName() }<em>
+                  <em style="color: black">takes</em>
+                  <em style="color: mediumpurple"> round ${roundCount}</em>`
 
     setTimeout( function() {
-      turnMsg.innerHTML = (winner == 'none') ? 'Draw' : winner.getName() + winMsg;
+      turnMsg.innerHTML = (drawRound) ? 'Draw' : winMsg;
     }, 50)
   }
 

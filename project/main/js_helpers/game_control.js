@@ -1,7 +1,12 @@
-const gameButton = document.getElementById('gameBtn');
+// cached dom
+const gameButton = document.getElementById('game-btn');
+const roundNum   = document.getElementById('round-num');
+
 
 // start round
 gameButton.addEventListener('click', () => {
+  if (roundCount == 0) events.emit('gameStart');
+
   events.emit('startRound', true)
 
   hideControl()
@@ -17,9 +22,13 @@ events.on("gameOver", hideControl)
 function showControl() {
   gameButton.innerHTML = 'Next Round'
 
-  gameButton.hidden = false;
+  roundNum.hidden = true
+
+  gameButton.hidden = false
 }
 
 function hideControl() {
-  gameButton.hidden = true;
+  gameButton.hidden = true
+
+  roundNum.hidden = false
 }

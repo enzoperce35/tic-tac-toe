@@ -2,7 +2,7 @@ const game = (() => {
 
   // variables
   const gameOver = () => {
-    let roundLimitReached = (() => roundCount == 3 && roundClosed())();
+    let roundLimitReached = (() => roundCount == 10 && roundClosed())();
 
     let targetScoreReached = (() => players.getScores().some((e) => e >= 5))();
 
@@ -63,6 +63,7 @@ const game = (() => {
     }
   }
 
-  return {gameWinner, roundClosed}
+  return { gameWinner,
+           roundClosed }
 
 })();

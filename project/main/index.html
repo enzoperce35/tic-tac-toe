@@ -14,25 +14,39 @@
 
   <body>
     <main>
-      <div class="players">
-        <input type="text" value="PLAYER 1"><br>
+      <div class="side-wings">
+        <span class="input-wrap">
+          <input type="text" value="PLAYER 1"><br>
+        </span>
+
         <em class="score"></em>
       </div>
 
-      <div class="board_cont">
-        <div>
-          <p id="roundNum"></p>
-          <p id="turnPlayer"></p>
+      <div class="board-cont">
+        <div class="game-info">
+          <p>
+            <em style="color:darkorange">TIC</em>
+            <em style="color:chartreuse">TAC</em>
+            <em style="color:indigo">TOE</em>
+          </p>
+
+          <p id="turnplayer">Press Start Button</p>
         </div>
 
-        <div class="game_board">
+        <div class="gameboard">
           <ul>
             <li id="a1"></li>
             <li id="a2"></li>
             <li id="a3"></li>
+          </ul>
+
+          <ul>
             <li id="b1"></li>
             <li id="b2"></li>
             <li id="b3"></li>
+          </ul>
+
+          <ul>
             <li id="c1"></li>
             <li id="c2"></li>
             <li id="c3"></li>
@@ -40,12 +54,17 @@
         </div>
 
         <div>
-          <button id="gameBtn">Start</button>
+          <button id="game-btn">Start</button>
+
+          <p id="round-num" hidden="true"></p>
         </div>
       </div>
 
-      <div class="players">
-        <input type="text" value="PLAYER 2"><br>
+      <div class="side-wings">
+        <span class="input-wrap">
+          <input type="text" value="PLAYER 2"><br>
+        </span>
+
         <em class="score"></em>
       </div>
     </main>

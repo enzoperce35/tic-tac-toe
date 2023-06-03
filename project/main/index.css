@@ -1,14 +1,109 @@
-main {
+@import url("/project/reset.css");
+
+main, body {
   height: 100vh;
+}
+
+main {
   display: grid;
   grid-template-columns: 25vw 50vw 25vw;
   background-color: rgb(187, 97, 132);
 }
 
-.board_cont {
+
+/* Score and Username Container */
+.side-wings {
+  margin: auto;
+  display: grid;
+  grid-template-rows: repeat(2 max-content);
+}
+
+.input-wrap {
+  margin: auto;
+  font-size: 40px;
+}
+
+input {
+  width: 200px;
+  border: 0px;
+  background-color: rgb(187, 97, 132);;
+  font-size: 30px;
+}
+
+input:focus {
+  outline: none;
+  background-color: rgb(187, 97, 132);;
+}
+
+.score {
+  font-size: 300px;
+}
+
+
+/* Board Container */
+.board-cont {
+  background-color: white;
+  padding: 6vh 25vh;
+  display: grid;
+  grid-template-rows: 19vh 50vh 19vh;
+  box-sizing: border-box;
+}
+
+.board-cont > :last-child,
+.board-cont > :first-child {
+  margin: auto;
+}
+
+/* Game Info */
+.game-info {
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
+  font-weight: bolder;
+}
+
+.game-info :first-child {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Game Board */
+.gameboard {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  background-color: olive;
+}
+
+.gameboard ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+li {
+  height: calc((50vh - 20px)/3);
   background-color: white;
 }
 
-.players {
-  margin: auto;
+object {
+  height: 100%;
+  width: 100%;
+}
+
+/* game control */
+#game-btn {
+  background-color: green;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#round-num {
+  font-size: 30px;
+  font-weight: bolder;
 }

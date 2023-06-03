@@ -1,11 +1,15 @@
 const Player = (playerName, index) => {
-  const name  = playerName;
-  const piece = index == 0 ? "X" : "O";
 
+  // variables
+  let name  = playerName;
+  let piece = index == 0 ? "/project/images/alpha-x.svg" : "/project/images/alpha-o.svg";
   let tiles = [];
   let score = 0;
+  let winComb  = '';
 
-  const getScore = () => {
+
+  // functions
+  function getScore() {
     return score
   }
 
@@ -35,7 +39,18 @@ const Player = (playerName, index) => {
     return tiles
   }
 
-  return { getName, getPiece, getTiles, tiles, resetTiles, getScore, addScore, addPiece };
+  function changeName(newName){
+    name = newName
+  }
+
+  return { changeName,
+           getName,
+           getPiece,
+           getTiles,
+           tiles,
+           resetTiles,
+           getScore,
+           addScore,
+           addPiece,
+           winComb };
 };
-
-
