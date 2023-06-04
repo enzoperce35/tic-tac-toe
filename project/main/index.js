@@ -2,6 +2,8 @@
 let round = '';
 let roundCount = 0;
 
+
+// this is file concatination; all project js files are added in a single js file.
 function include(file) {
   var script = document.createElement('script');
   script.src = file;
